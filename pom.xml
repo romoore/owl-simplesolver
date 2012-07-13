@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-Instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!-- POM model version 4 -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Group ID is usually the reverse domain name of your company,
+  organization, or project. -->
+  <groupId>local.example</groupId>
+  
+  <!-- Artifact ID is some unique identifier for the project
+  within your organization. -->
+  <artifactId>simple-solver-example</artifactId>
+
+  <!-- The version of the project. -SNAPSHOT indicates that this is
+  a development build, and not a release. -->
+  <version>1.0.0-SNAPSHOT</version>
+
+  <!-- Packaging indicates how to distribute the project and include it as a
+  dependency in others.  The most common is to build a Jar file. -->
+  <packaging>jar</packaging>
+
+  <!-- The human-readable name of the project. -->
+  <name>Simple Solver Example Project</name>
+
+  <!-- A little bit of text to describe the project. -->
+  <description>A skeleton project to make Owl Platform solver development
+  easier.</description>
+</project>
