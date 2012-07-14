@@ -24,4 +24,74 @@
   <!-- A little bit of text to describe the project. -->
   <description>A skeleton project to make Owl Platform solver development
   easier.</description>
+
+  <!-- Various project properties.  Source encoding is considered standard.  -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <!-- The build section provides configuration related to how the project is
+  built, packaged, and distributed.  Plugins the most common components of
+  this section. -->
+  <build>
+    <!-- Maven plugins to provide additional functionality. -->
+    <plugins>
+      <!-- Maven Compiler Plugin is used to compile the source. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.5.1</version>
+      </plugin>
+      <!-- The Maven Jar Plugin is used to build the project into an
+      executable JAR file for convenience. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <!-- Be sure to include the classpath in the JAR manifest. -->
+              <addClasspath>true</addClasspath>
+              <!-- The full name of the main class. -->
+              <mainClass>local.solver.SimpleSolver</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <!-- The Maven Bundle Plugin is required because Apache Mina
+      is provided as a bundle, and not a single JAR. -->
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>2.3.7</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- The project dependencies are managed automatically by Maven. They are
+  either downloaded from one of several repostiories, or found locally after
+  another Maven project was "installed" to the local repository. -->
+  <dependencies>
+    <!-- Owl Platform Common Library -->
+    <dependency>
+      <groupId>com.owlplatform</groupId>
+      <artifactId>owl-common</artifactId>
+      <version>1.0.2</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>com.owlplatform</groupId>
+      <artifactId>owl-solver</artifactId>
+      <version>1.0.1</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>com.owlplatform</groupId>
+      <artifactId>owl-worldmodel</artifactId>
+      <version>1.0.2</version>
+      <type>jar</type>
+    </dependency>
+  </dependencies>
 </project>
