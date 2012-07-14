@@ -11,8 +11,8 @@ import com.owlplatform.worldmodel.types.BooleanConverter;
 
 /**
  * A skeleton class for an Owl Platform solver that receives samples from an
- * Aggregator and sends data to a World Model.  Every time a sample is received, it
- * sends an update.
+ * Aggregator and sends data to a World Model. Every time a sample is received,
+ * it sends an update.
  * 
  * @author Robert Moore
  * 
@@ -172,7 +172,7 @@ public class SimpleSolver extends Thread {
         attr.setCreationDate(System.currentTimeMillis());
         attr.setId(NumericUtils.toHexShortString(sample.getDeviceId()));
         attr.setData(BooleanConverter.get().encode(true));
-      } 
+      }
       // If the RSSI value is below threshold, say it's "not nearby".
       else {
         attr.setAttributeName(TEST_ATTRIBUTE);
@@ -180,12 +180,23 @@ public class SimpleSolver extends Thread {
         attr.setId(NumericUtils.toHexShortString(sample.getDeviceId()));
         attr.setData(BooleanConverter.get().encode(false));
       }
-      System.out.println(attr.getId() + ": "+ attr);
+      System.out.println(attr.getId() + ": " + attr);
       // Don't actually send, since that would be a huge waste of data
       // this.wm.updateAttribute(attr);
     }
 
     System.out.println("No more samples available. Exiting.");
+
+    try {
+      this.agg.disconnect();
+    } catch (Exception e) {
+      // Ignored
+    }
+    try {
+      this.wm.disconnect();
+    } catch (Exception e) {
+      // Ignored
+    }
   }
 
 }
