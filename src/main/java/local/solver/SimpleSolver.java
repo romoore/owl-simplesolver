@@ -53,13 +53,16 @@ public class SimpleSolver extends Thread {
       return;
     }
 
+    // Create a new solver.
     SimpleSolver ss = new SimpleSolver(args[0], aggPort, args[2], wmPort);
 
+    // Try to connect, exiting on failure. May take up to 25 seconds as written.
     if (!ss.connect()) {
       System.err.println("Unable to connect to Owl Platform.");
       return;
     }
 
+    // Launch the solver thread.
     ss.start();
   }
 
@@ -171,14 +174,14 @@ public class SimpleSolver extends Thread {
         attr.setAttributeName(TEST_ATTRIBUTE);
         attr.setCreationDate(System.currentTimeMillis());
         attr.setId(NumericUtils.toHexShortString(sample.getDeviceId()));
-        attr.setData(BooleanConverter.get().encode(true));
+        attr.setData(BooleanConverter.get().encode(Boolean.TRUE));
       }
       // If the RSSI value is below threshold, say it's "not nearby".
       else {
         attr.setAttributeName(TEST_ATTRIBUTE);
         attr.setCreationDate(System.currentTimeMillis());
         attr.setId(NumericUtils.toHexShortString(sample.getDeviceId()));
-        attr.setData(BooleanConverter.get().encode(false));
+        attr.setData(BooleanConverter.get().encode(Boolean.FALSE));
       }
       System.out.println(attr.getId() + ": " + attr);
       // Don't actually send, since that would be a huge waste of data
